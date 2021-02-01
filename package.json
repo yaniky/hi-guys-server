@@ -1,0 +1,22 @@
+{
+  "name": "hi-firend-server",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "dev": "node-dev index.js",
+    "start": "pm2 start index.js --name hi-firend-server",
+    "restart": "pm2 restart hi-firend-server",
+    "stop": "pm2 stop hi-firend-server"
+  },
+  "author": "yaniky",
+  "license": "ISC",
+  "dependencies": {
+    "express": "^4.17.1",
+    "express-ws": "^4.0.0",
+    "log4js": "^6.3.0",
+    "node-dev": "^6.2.0",
+    "pm2": "^4.5.4",
+    "portfinder": "^1.0.28"
+  }
+}
