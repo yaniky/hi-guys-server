@@ -7,7 +7,6 @@ const { WebsocketConnect } = require("./lib/WebsocketConnect");
 const expressWs = require('express-ws')(app);
 
 app.all('*', function (req, res, next) {
-    logger.info("set cor header");
     res.header('Access-Control-Allow-Origin', '*');
     res.header('Access-Control-Allow-Headers', 'Content-Type');
     res.header('Access-Control-Allow-Methods', '*');
