@@ -6,6 +6,15 @@ const logger = require('./utils/log').logger;
 const { WebsocketConnect } = require("./lib/WebsocketConnect");
 const expressWs = require('express-ws')(app);
 
+app.all('*', function (req, res, next) {
+    logger.info("set cor header");
+    res.header('Access-Control-Allow-Origin', '*');
+    res.header('Access-Control-Allow-Headers', 'Content-Type');
+    res.header('Access-Control-Allow-Methods', '*');
+    res.header('Content-Type', 'application/json;charset=utf-8');
+    next();
+});
+
 app.use(express.json());
 app.use('/static', express.static('static'));
 
