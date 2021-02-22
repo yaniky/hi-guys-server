@@ -19,18 +19,29 @@ router.post('/launch', function(req, res, next) {
     logger.info(`${req.body.userId} launch`);
     launchTime += 1;
     logger.info(`launch num => ${launchTime}`)
-    const link = await UserLinkCenter.addLink({
-        userId: req.body.userId,
-        type: req.body.type
-    });
-    res.send({
-        code: 1,
-        data: {
-            port: port,
-            path: link.path,
-            userId: req.body.userId
-        }
-    });
+    try {
+        const link = await UserLinkCenter.addLink({
+            userId: req.body.userId,
+            linkWay: req.body.linkWay,
+            type: req.body.type,
+            targetId: req.body.targetId
+        });
+        res.send({
+            code: 1,
+            data: {
+                port: port,
+                path: link.path,
+                userId: req.body.userId
+            }
+        });
+    } catch(e) {
+        res.send({
+            code: -1,
+            data: {
+                msg: e
+            }
+        })
+    }
 });
  
 module.exports = router;
